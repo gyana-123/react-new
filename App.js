@@ -1,15 +1,49 @@
        import React from 'react';
        import  ReactDOM  from 'react-dom/client';
         
-        
-        const heading = React.createElement("div", { id: "parent"} ,     // core react
-                        React.createElement("div", { id: "child"} ,
-                        [React.createElement("h1", { } ,
-                        "H1 tag hello"),
-                        React.createElement("h2", { } ,
-                        "H2 Tag")]));
+       // functional comonent
+       
+       // component composing ----> component inside a component
+        const Title =()=>{                    // arrow function
+          return  <h1 className='head'>
+                I am learning react js
+            </h1>
+        }
 
-        // heading is a react object ---- javascript normal object
+        // const Title =()=>(                   
+        //      <h1 className='head'>
+        //           I am learning react js
+        //       </h1>
+        // )
+
+
+        const heading =                            // react element
+         <h1 className='head'>
+        I am learning react js
+        </h1>
+
+        // const Title = function(){            // normal function
+        //     return (
+        //          <h1 className='head'>
+        //              I am learning react js
+        //          </h1>
+        //      )}
+
+        const HeadingComponet = () => (         
+            <div id='container'>
+                {Title()}
+                <Title/>
+                <Title></Title>                     
+                 {/* we can write like three ways */}
+                <h1 className='heading'>
+                     functional component
+                </h1>
+            </div>
+        )
+
+
+
+
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(heading);
+        root.render(<HeadingComponet/>);
